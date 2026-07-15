@@ -27,6 +27,13 @@ resource "aws_instance" "myec2" {
     bucket_name = var.bucket_name
   })
   tags = {
-    Name = "my-ec2-from-tf"
+    Name = each.value
   }
+}
+
+output "blue_instance" {
+  value = aws_instance.myec2["blue"].id
+}
+output "red_instance" {
+  value = aws_instance.myec2["red"].id
 }

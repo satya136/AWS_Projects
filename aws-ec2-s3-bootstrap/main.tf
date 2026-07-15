@@ -22,3 +22,15 @@ module "ec2" {
   bucket_name = module.s3.bucket_name
   bucket_arn = module.s3.bucket_arn
 }
+
+module "alb" {
+  source = "./modules/ALB"
+  instances = {
+    red_instance = module.ec2.red_instance,
+    blue_instance = module.ec2.blue_instance
+  }
+}
+
+output "lb_dns" {
+  value = module.alb.public_dns
+}
