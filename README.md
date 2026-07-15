@@ -14,6 +14,11 @@ The goal of this repository is to document practical cloud architectures, automa
   * **Automation:** Automatically deploys and configures a static website using an `httpd` (Apache) web server via user data scripts.
   * **Access:** The static site can be accessed publicly over the internet using the EC2 instance's Public IP address.
 
+* **[aws-advanced-request-routing](./aws-advanced-request-routing/)**
+  * **Description:** Deploys a highly available web architecture where EC2 instances are placed behind an Application Load Balancer (ALB).
+  * **Routing Configuration:** Configures **Path-based routing** (forwarding requests based on URL paths like `/red*` or `/blue*`).
+  * **Automation:** EC2 instances automatically retrieve custom website code securely from an S3 bucket on boot using assigned IAM Roles. It also handles the automated creation of Target Groups, ALB Listeners.
+
 * *(More cloud projects coming soon...)*
 
 ---
@@ -21,10 +26,28 @@ The goal of this repository is to document practical cloud architectures, automa
 ## Prerequisites
 To run the projects in this repository, you will need:
 * [Terraform](https://www.terraform.io/downloads) installed locally.
-* An active **AWS Account**.
+* An active **AWS Free Tier Account**.
 * [AWS CLI](https://aws.amazon.com/cli/) configured with the necessary IAM permissions.
 
 ## How to Use
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/satya136/AWS_Projects.git](https://github.com/satya136/AWS_Projects.git)
+   git clone https://github.com/satya136/AWS_Projects.git
+   ```
+2. Navigate into the specific project directory you wish to deploy (e.g., `cd aws-advanced-request-routing`).
+3. Initialize the Terraform environment:
+   ```bash
+   terraform init
+   ```
+4. Review the deployment plan:
+   ```bash
+   terraform plan
+   ```
+5. Apply the configuration to build the infrastructure:
+   ```bash
+   terraform apply
+   ```
+6. **Cleanup**: To avoid unexpected charges, always destroy the infrastructure when you are done testing:
+   ```bash
+   terraform destroy
+   ```
