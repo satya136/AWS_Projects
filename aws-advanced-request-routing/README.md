@@ -12,7 +12,7 @@ The infrastructure is provisioned using Terraform and consists of the following 
 
 * **Amazon VPC:** Multi-AZ deployment (subnets in `us-east-1a` and `us-east-1b`) for high availability.
 * **Amazon EC2:** Two web servers ("Red" and "Blue" on `t2.micro` instances) hosting custom HTML/CSS content.
-* **Amazon S3:** A unique bucket (e.g., `arr-bucket-123456`) used to store the website code and assets, securely retrieved by the EC2 instances on boot via user-data scripts.
+* **Amazon S3:** A unique bucket used to store the website code and assets, securely retrieved by the EC2 instances on boot via user-data scripts.
 * **IAM Roles:** An instance profile attached to the EC2 instances granting read-only access to the S3 bucket.
 * **Security Groups:** A security group configured to allow inbound HTTP (port 80) traffic from anywhere (0.0.0.0/0).
 * **Application Load Balancer (ALB):** An internet-facing load balancerrouting traffic across multiple Availability Zones.
