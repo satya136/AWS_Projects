@@ -19,6 +19,11 @@ The goal of this repository is to document practical cloud architectures, automa
   * **Routing Configuration:** Configures **Path-based routing** (forwarding requests based on URL paths like `/red*` or `/blue*`).
   * **Automation:** EC2 instances automatically retrieve custom website code securely from an S3 bucket on boot using assigned IAM Roles. It also handles the automated creation of Target Groups, ALB Listeners.
 
+* **[custom_vpc](./vpc/)**
+  * **Description:** Demonstrates foundational AWS networking and security concepts by deploying a custom VPC with isolated EC2 workloads.
+  * **Automation:** Uses Terraform to provision the VPC, configure granular Security Groups, and automate Apache web server deployment via User Data.
+  * **Validation:** Implements rules for HTTP, SSH, and ICMP to verify secure external access and internal inter-instance communication.
+
 * *(More cloud projects coming soon...)*
 
 ---
